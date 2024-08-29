@@ -1,26 +1,29 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React from "react";
 import Colors from "@/src/constants/Colors";
 import { Product } from "@/src/constants/types";
+import { Link } from "expo-router";
 type ProductListItemProps = {
   product: Product;
 };
 const ProductListItem = ({ product }: ProductListItemProps) => {
   return (
-    <View key={product.id} style={styles.container}>
-      <Image
-        resizeMode="contain"
-        source={{ uri: product.image }}
-        style={styles.image}
-      />
-      <Text style={styles.title}>{product.name}</Text>
-      <Text style={styles.price}>${product.price}</Text>
-    </View>
+    <Link href={`/Menu/ProductDetailsScreen/${product.id}`} asChild>
+      <Pressable key={product.id} style={styles.container}>
+        <Image
+          resizeMode="contain"
+          source={{ uri: product.image }}
+          style={styles.image}
+        />
+        <Text style={styles.title}>{product.name}</Text>
+        <Text style={styles.price}>${product.price}</Text>
+      </Pressable>
+    </Link>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 10,
     backgroundColor: "white",
     borderRadius: 10,
     flex: 1,

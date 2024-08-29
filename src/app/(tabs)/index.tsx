@@ -1,21 +1,4 @@
-import { StyleSheet, View, FlatList } from "react-native";
-import Colors from "@/src/constants/Colors";
-import _products from "@/assets/data/products";
-import ProductListItem from "@/src/components/ProductListItem";
-export default function MenuScreen() {
-  return (
-    <FlatList
-      data={_products}
-      renderItem={({ item }) => {
-        return <ProductListItem product={item} />;
-      }}
-      contentContainerStyle={{
-        gap: 20,
-        padding: 20,
-      }}
-      columnWrapperStyle={{ gap: 20 }}
-      showsVerticalScrollIndicator={false}
-      numColumns={2}
-    />
-  );
+import { Redirect } from "expo-router";
+export default function Home() {
+  return <Redirect href="/Menu/" />;
 }
